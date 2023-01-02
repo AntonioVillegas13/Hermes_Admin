@@ -14,6 +14,7 @@ import { ReseteoForm } from './app/screens/LoginScreen/ReseteoCorreoScreen';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from '@rneui/base';
 import{AdminPedidos} from './app/screens/AdministradorScreen/AdminPedidosScreen'
+import{Productos} from './app/screens/AdministradorScreen/Productos'
 import theme from './app/theme/theme';
 
 const Stack = createNativeStackNavigator();
@@ -28,7 +29,7 @@ return <Tab.Navigator screenOptions={({ route }) => ({
   tabBarIcon: ({ focused, color, size }) => {
     let iconName;
 
-    if (route.name === 'TabArmarPedido1') {
+    if (route.name === 'TabProductosAdmin') {
       iconName ="pencil-square-o"
     } else if (route.name === 'TabPedidosAdmin') {
       iconName = "shopping-cart";
@@ -54,6 +55,14 @@ return <Tab.Navigator screenOptions={({ route }) => ({
     <Tab.Screen
       name="TabPedidosAdmin"
       component={AdminPedidos}
+      options={{
+        title: "PedidosAdminstrador"
+        
+      }}
+    />
+    <Tab.Screen
+      name="TabProductosAdmin"
+      component={Productos}
       options={{
         title: "PedidosAdminstrador"
         
@@ -140,7 +149,7 @@ export default function App() {
 
 
     <NavigationContainer>
-      {Login ? <Administrador /> : <LoginNav />} 
+      {Login ? <Administrador /> : <Administrador />} 
       {/* //Administrador ClientesTab */}
     </NavigationContainer>
 
