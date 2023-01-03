@@ -124,12 +124,12 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        marginBottom: 50,
+        // marginBottom: 50,
         paddingTop: 75,
     },
     cajaCuerpo: {
         backgroundColor: 'brown',
-        flex: 3,
+        flex: 10,
         alignItems: 'stretch',
         justifyContent: 'center'
     },
