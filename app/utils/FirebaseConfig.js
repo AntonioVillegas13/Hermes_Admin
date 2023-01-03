@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import {initializeFirestore} from 'firebase/firestore';
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -10,15 +12,6 @@ import { getFirestore } from "firebase/firestore";
 import { doc, setDoc,addDoc,collection ,getDoc} from "firebase/firestore"; 
 import { Alert } from "react-native";
 
-
-
-export const loadConfiguration=()=>{
-   // Alert.alert("carga la configuracio!!!");
-    const app = initializeApp(firebaseConfig);
-    global.dbCon=getFirestore(app);
-}
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyBA1gAmzWzLm7eNt5d40naFkWwBTMGE8BQ",
     authDomain: "prueba13112022.firebaseapp.com",
@@ -28,39 +21,20 @@ const firebaseConfig = {
     appId: "1:103190844507:web:0b19c6797e547e65849b7e",
 };
 
-// Initialize Firebase
 
-//funciones a usar  para guardar,editar,recuperar
- {/* Esto no funcionará 
-const guardar=()=>{
-    let miPedido={
-        nombre:"agua Gas2",
-        Precio:"3.4",
-        Peso:"433"
-    
-    }
 
-    const refPedido =doc(db,"Pedidos","P-3");
-        setDoc(refPedido,miPedido)
-}
 
-const guardarConAdd=()=>{
-    let miPedido={
-        nombre:"agua Gas2",
-        Precio:"3.4",
-        Peso:"433"
-    
-    }
-    const refPedidios =collection(db,"Pedidos");
-    addDoc(refPedidios,miPedido)
+
+
+export const loadConfiguration=()=>{
+   // Alert.alert("carga la configuracio!!!");
+    const app = initializeApp(firebaseConfig);
+    const db =initializeFirestore(app,{
+        experimentalForceLongPolling: true,
+    });
+    initializeApp(firebaseConfig);
+    global.dbCon=db;
 }
-const RecuperarDocumento=async ()=>{
-    const refPedido=doc(db,'Pedidos',"P-3")
-    const personaSnap=await getDoc(refPedido);
-   if (personaSnap.exists()){
-    Alert.alert("existe")
-   }else{
-    Alert.alert("No existe")
-   }
-}
- */}
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+

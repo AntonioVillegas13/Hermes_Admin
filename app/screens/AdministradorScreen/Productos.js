@@ -24,10 +24,16 @@ export function Productos() {
 
 
     return <View style={styles.container}>
-        <Text>Productos</Text>
-        <TarjetaProducto
-        productos={productos} 
-        />
+        <View style={styles.cajaCabecera}>
+        <Text style={{ fontSize: 42 }}>Productos</Text>
+        </View>
+        <View style={styles.cajaCuerpo}>
+
+            <TarjetaProducto
+                productos={productos}
+
+            />
+        </View>
 
     </View>
 
@@ -38,7 +44,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffff',
-        alignItems: 'center',
+        alignItems: 'stretch',
         justifyContent: 'center',
 
     },
@@ -122,9 +128,9 @@ const styles = StyleSheet.create({
         paddingTop: 75,
     },
     cajaCuerpo: {
-        // backgroundColor: 'brown',
+        backgroundColor: 'brown',
         flex: 3,
-        alignItems: 'center',
+        alignItems: 'stretch',
         justifyContent: 'center'
     },
     titulo: {
