@@ -14,6 +14,7 @@ export const TarjetaProducto = (props) => {
         return (
 
             <TouchableHighlight onPress={() => {
+                
             }}>
                 <Card>
                     

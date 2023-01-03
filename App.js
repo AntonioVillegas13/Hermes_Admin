@@ -15,9 +15,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from '@rneui/base';
 import{AdminPedidos} from './app/screens/AdministradorScreen/AdminPedidosScreen'
 import{Productos} from './app/screens/AdministradorScreen/Productos'
+import { ModProd } from './app/screens/AdministradorScreen/ModProd';
 import theme from './app/theme/theme';
 
-const Stack = createNativeStackNavigator();
+const StackMoProd = createNativeStackNavigator();
 const LoginStack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
@@ -69,8 +70,14 @@ return <Tab.Navigator screenOptions={({ route }) => ({
       }}
     />
 
-
-
+<Tab.Screen
+      name="TabProductoMod"
+      component={ModProd}
+      options={{
+        title: "modificacion producto"
+        
+      }}
+/>
 </Tab.Navigator>
 
 
@@ -78,6 +85,20 @@ return <Tab.Navigator screenOptions={({ route }) => ({
 }
 
 
+
+const ModProducto = () => {
+
+  return <StackMoProd.Navigator>
+
+<StackMoProd.Screen
+      name="ModProdNav"
+      options={{
+        headerShown: false
+      }}
+      component={ModProd} />
+
+  </StackMoProd.Navigator>
+}
 
 
 

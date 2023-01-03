@@ -6,7 +6,7 @@ import { recuperarProductosAdmin } from "../../Services/AdminSrv";
 import theme from "../../theme/theme";
 import { TarjetaProducto } from "../../Components/ProductosComponent";
 
-export function Productos() {
+export function Productos({ navigation }) {
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
@@ -31,6 +31,7 @@ export function Productos() {
 
             <TarjetaProducto
                 productos={productos}
+                navegar={ navigation }
 
             />
         </View>
