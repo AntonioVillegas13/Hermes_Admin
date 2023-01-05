@@ -14,7 +14,7 @@ export const TarjetaProducto = (props) => {
         return (
 
             <TouchableHighlight onPress={() => {
-                
+                props.navegar.navigate("ModProdNav")
             }}>
                 <Card>
                     

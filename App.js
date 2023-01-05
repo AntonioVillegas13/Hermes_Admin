@@ -13,8 +13,8 @@ import { Registrar } from './app/screens/LoginScreen/RegistrarUsuario';
 import { ReseteoForm } from './app/screens/LoginScreen/ReseteoCorreoScreen';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from '@rneui/base';
-import{AdminPedidos} from './app/screens/AdministradorScreen/AdminPedidosScreen'
-import{Productos} from './app/screens/AdministradorScreen/Productos'
+import { AdminPedidos } from './app/screens/AdministradorScreen/AdminPedidosScreen'
+import { Productos } from './app/screens/AdministradorScreen/Productos'
 import { ModProd } from './app/screens/AdministradorScreen/ModProd';
 import theme from './app/theme/theme';
 
@@ -25,60 +25,60 @@ const Tab = createBottomTabNavigator();
 
 
 
-const Administrador=()=>{
-return <Tab.Navigator screenOptions={({ route }) => ({
-  tabBarIcon: ({ focused, color, size }) => {
-    let iconName;
+const Administrador = () => {
+  return <Tab.Navigator screenOptions={({ route }) => ({
+    tabBarIcon: ({ focused, color, size }) => {
+      let iconName;
 
-    if (route.name === 'TabProductosAdmin') {
-      iconName ="pencil-square-o"
-    } else if (route.name === 'TabPedidosAdmin') {
-      iconName = "shopping-cart";
-    }
+      if (route.name === 'TabProductosAdmin') {
+        iconName = "pencil-square-o"
+      } else if (route.name === 'TabPedidosAdmin') {
+        iconName = "shopping-cart";
+      }
 
-    // You can return any component that you like here!
-    return <Icon name={iconName} size={size} color={color} type='font-awesome' />;
-  },
-  tabBarActiveTintColor: theme.colors.morado,
-  tabBarInactiveTintColor: 'gray',
-   tabBarStyle: {
-        // position: 'absolute',
-        backgroundColor: "#FBFBFF",
-        height: 60,
-      },
-       tabBarHideOnKeyboard: true,
-      headerShown: false,
-      // tabBarShowLabel: false,
-})} 
+      // You can return any component that you like here!
+      return <Icon name={iconName} size={size} color={color} type='font-awesome' />;
+    },
+    tabBarActiveTintColor: theme.colors.morado,
+    tabBarInactiveTintColor: 'gray',
+    tabBarStyle: {
+      // position: 'absolute',
+      backgroundColor: "#FBFBFF",
+      height: 60,
+    },
+    tabBarHideOnKeyboard: true,
+    headerShown: false,
+    // tabBarShowLabel: false,
+  })}
 
 
->
+  >
     <Tab.Screen
       name="TabPedidosAdmin"
       component={AdminPedidos}
       options={{
         title: "PedidosAdminstrador"
-        
+
       }}
     />
     <Tab.Screen
       name="TabProductosAdmin"
-      component={Productos}
+      component={ModProducto}
       options={{
         title: "PedidosAdminstrador"
-        
+
       }}
     />
-
-<Tab.Screen
+{/* 
+    <Tab.Screen
       name="TabProductoMod"
-      component={ModProd}
+      component={ModProducto}
       options={{
         title: "modificacion producto"
-        
+
       }}
-/>
-</Tab.Navigator>
+    /> */}
+  </Tab.Navigator>
 
 
 
@@ -90,12 +90,22 @@ const ModProducto = () => {
 
   return <StackMoProd.Navigator>
 
-<StackMoProd.Screen
+    <StackMoProd.Screen
+      name="TabProductosAdmin"
+      component={Productos}
+      options={{
+        title: "PedidosAdminstrador"
+
+      }}
+    />
+
+    <StackMoProd.Screen
       name="ModProdNav"
       options={{
         headerShown: false
       }}
       component={ModProd} />
+
 
   </StackMoProd.Navigator>
 }
@@ -170,7 +180,7 @@ export default function App() {
 
 
     <NavigationContainer>
-      {Login ? <Administrador /> : <Administrador />} 
+      {Login ? <Administrador /> : <Administrador />}
       {/* //Administrador ClientesTab */}
     </NavigationContainer>
 
