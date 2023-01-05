@@ -61,3 +61,18 @@ export const enviarPedidos = (pedido) => {
 
 
 }
+
+export const CambiarProducto=(producto)=>{
+    console.log(global.dbCon);
+    const productRef = doc(global.dbCon, "Producto", producto.id);
+    setDoc(productRef, producto);
+}
+
+export const AddProduct=(producto)=>{
+    console.log(global.dbCon);
+    const productRef = doc(global.dbCon, "Producto", producto.id);
+    setDoc(productRef, producto);
+
+}
+
+

@@ -1,36 +1,28 @@
 
 import { useEffect, useState } from "react";
-import { View, Alert, StyleSheet, FlatList, TouchableHighlight, ScrollView } from "react-native"
+import { View, StyleSheet, FlatList, TouchableHighlight, ScrollView } from "react-native"
 import { Card, Text, TextInput } from 'react-native-paper';
 import theme from '../../theme/theme'
 import { Button, Icon } from '@rneui/base';
-import { CambiarProducto } from "../../Services/ProductosSrv";
+import { AddProduct } from "../../Services/ProductosSrv";
 
-export function ModProd({ route, navigation }) {
+export function AddProd({ route, navigation }) {
     const [tituloaux, setTitulo] = useState("");
     const [precioaux, setPrecio] = useState("");
     const [categoriaaux, setCategoria] = useState("");
     const [Idaux, setId] = useState("");
 
 
+    const AñadirProducto = () => {
 
 
-    const ActualizarProducto=()=>{
-        CambiarProducto({
-            id:id,
-            price:precioaux,
-            Category:categoriaaux,
-            title:tituloaux
+        AddProduct({
+            id: Idaux,
+            price: precioaux,
+            Category: categoriaaux,
+            title: tituloaux
         });
-
     }
-    const { titulo, precio, categoria,id } = route.params;
-    useEffect(() => {
-        setPrecio(precio);
-        setTitulo(titulo)
-        setCategoria(categoria)
-        setId(id)
-    }, [])
 
 
 
@@ -44,6 +36,13 @@ export function ModProd({ route, navigation }) {
 
             </Card.Content>
         </Card>
+
+        <TextInput
+            label="Codigo"
+            value={Idaux}
+            onChangeText={setId}
+            mode="outlined"
+        />
 
         <TextInput
             label="Nombre"
@@ -66,11 +65,13 @@ export function ModProd({ route, navigation }) {
             onChangeText={setCategoria}
             mode="outlined"
         />
+
         <View style={styles.cajaBotones}>
             <Button
-                title='Modificar Producto'
+                title='Agregar Producto'
                 onPress={() => {
-                    ActualizarProducto();
+                    AñadirProducto();
+                    navigation.goBack();
                 }}
                 buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
                 containerStyle={{

@@ -16,6 +16,7 @@ import { Icon } from '@rneui/base';
 import { AdminPedidos } from './app/screens/AdministradorScreen/AdminPedidosScreen'
 import { Productos } from './app/screens/AdministradorScreen/Productos'
 import { ModProd } from './app/screens/AdministradorScreen/ModProd';
+import { AddProd } from './app/screens/AdministradorScreen/AgregarProductoScreen';
 import theme from './app/theme/theme';
 
 const StackMoProd = createNativeStackNavigator();
@@ -105,6 +106,14 @@ const ModProducto = () => {
         headerShown: false
       }}
       component={ModProd} />
+    
+    <StackMoProd.Screen
+      name="AddProdNav"
+      options={{
+        headerShown: false
+      }}
+      component={AddProd} />
+    
 
 
   </StackMoProd.Navigator>

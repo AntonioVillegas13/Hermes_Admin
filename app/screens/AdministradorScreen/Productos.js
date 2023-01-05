@@ -5,13 +5,14 @@ import { View, Text, Alert, StyleSheet, FlatList, TouchableHighlight, ScrollView
 import { recuperarProductosAdmin } from "../../Services/AdminSrv";
 import theme from "../../theme/theme";
 import { TarjetaProducto } from "../../Components/ProductosComponent";
+import { FAB } from 'react-native-paper';
 
 export function Productos({ navigation }) {
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
         RecuperarProductos();
-    }, [])
+    }, [productos])
 
 
 
@@ -25,14 +26,25 @@ export function Productos({ navigation }) {
 
     return <View style={styles.container}>
         <View style={styles.cajaCabecera}>
-        <Text style={{ fontSize: 42 }}>Productos</Text>
+            <Text style={{ fontSize: 42 }}>Productos</Text>
         </View>
         <View style={styles.cajaCuerpo}>
 
             <TarjetaProducto
                 productos={productos}
-                navegar={ navigation }
+                navegar={navigation}
 
+            />
+        </View>
+        <View style={styles.cajaBotones}>
+            <FAB
+                icon="plus"
+                style={styles.fab}
+                onPress={() => {
+                    navigation.navigate("AddProdNav")
+
+
+                }}
             />
         </View>
 
@@ -48,7 +60,13 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
         justifyContent: 'center',
 
-    },
+    }, fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
+    }
+    ,
     impar: {
 
         marginLeft: 1,

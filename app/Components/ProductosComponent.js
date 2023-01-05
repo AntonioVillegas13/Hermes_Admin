@@ -14,12 +14,12 @@ export const TarjetaProducto = (props) => {
         return (
 
             <TouchableHighlight onPress={() => {
-                props.navegar.navigate("ModProdNav")
+                props.navegar.navigate("ModProdNav",{titulo:prod.title,precio:prod.price,categoria:prod.Category,id:prod.id})
             }}>
                 <Card>
-                    
-                    <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-                  <Card.Title title={prod.title} subtitle={prod.price} />
+
+                    <Card.Cover source={{ uri: 'https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000' }} />
+                    <Card.Title title={prod.title} subtitle={prod.price} />
                     <Card.Content>
                         {/* <Text variant="titleLarge">{prod.title}</Text> */}
                         <Text variant="bodyMedium">{prod.Category}</Text>
@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
         justifyContent: 'flex-start',
         flexDirection: "row",
-        padding:20,
-        backgroundColor:"gray"
+        padding: 20,
+        // backgroundColor: "gray"
     },
     caja: {
         backgroundColor: "red",
