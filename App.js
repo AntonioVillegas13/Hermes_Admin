@@ -17,6 +17,7 @@ import { AdminPedidos } from './app/screens/AdministradorScreen/AdminPedidosScre
 import { Productos } from './app/screens/AdministradorScreen/Productos'
 import { ModProd } from './app/screens/AdministradorScreen/ModProd';
 import { AddProd } from './app/screens/AdministradorScreen/AgregarProductoScreen';
+import { Clientes } from './app/screens/AdministradorScreen/Clients';
 import theme from './app/theme/theme';
 
 const StackMoProd = createNativeStackNavigator();
@@ -70,15 +71,16 @@ const Administrador = () => {
 
       }}
     />
-{/* 
-    <Tab.Screen
-      name="TabProductoMod"
-      component={ModProducto}
+     <Tab.Screen
+      name="Clientes"
+      component={Clientes}
       options={{
-        title: "modificacion producto"
+        title: "PedidosAdminstrador"
 
       }}
-    /> */}
+    />
+
+
   </Tab.Navigator>
 
 
