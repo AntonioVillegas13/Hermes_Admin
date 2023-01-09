@@ -17,6 +17,7 @@ import { AdminPedidos } from './app/screens/AdministradorScreen/AdminPedidosScre
 import { Productos } from './app/screens/AdministradorScreen/Productos'
 import { ModProd } from './app/screens/AdministradorScreen/ModProd';
 import { AddProd } from './app/screens/AdministradorScreen/AgregarProductoScreen';
+import { Clientes } from './app/screens/AdministradorScreen/Clients';
 import theme from './app/theme/theme';
 
 const StackMoProd = createNativeStackNavigator();
@@ -35,6 +36,8 @@ const Administrador = () => {
         iconName = "shopping-cart"
       } else if (route.name === 'TabPedidosAdmin') {
         iconName = "list-alt";
+      } else if (route.name === 'Clientes') {
+        iconName = "users";
       }
 
       // You can return any component that you like here!
@@ -71,15 +74,16 @@ const Administrador = () => {
 
       }}
     />
-{/* 
-    <Tab.Screen
-      name="TabProductoMod"
-      component={ModProducto}
+     <Tab.Screen
+      name="Clientes"
+      component={Clientes}
       options={{
-        title: "modificacion producto"
+        title: "Clientes"
 
       }}
-    /> */}
+    />
+
+
   </Tab.Navigator>
 
 

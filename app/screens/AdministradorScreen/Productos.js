@@ -14,8 +14,8 @@ export function Productos({ navigation }) {
         RecuperarProductos();
         const willFocusSubscription = navigation.addListener("focus", () => {
             RecuperarProductos();
-          });
-          return willFocusSubscription;
+        });
+        return willFocusSubscription;
     }, [])
 
 

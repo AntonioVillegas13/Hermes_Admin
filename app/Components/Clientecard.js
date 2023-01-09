@@ -1,28 +1,18 @@
 import { FlatList, ScrollView, TouchableHighlight, StyleSheet, View } from "react-native";
 import { Card, Button, Text } from 'react-native-paper';
-export const TarjetaProducto = (props) => {
+export const TarjetaCliente = (props) => {
 
-
-
-
-
-
-
-
-    let ItemProduct = ({ prod, indice }) => {
-
+    let ItemClient = ({ prod, indice }) => {
         return (
-
             <TouchableHighlight onPress={() => {
-                props.navegar.navigate("ModProdNav",{titulo:prod.title,precio:prod.price,categoria:prod.Category,id:prod.id})
+                props.navegar.navigate("ModProdNav", { titulo: prod.title, precio: prod.price, categoria: prod.Category, id: prod.id })
             }}>
                 <Card>
 
-                    <Card.Cover source={{ uri: 'https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000' }} />
-                    <Card.Title title={prod.title} subtitle={prod.price} />
+                    <Card.Title title={prod.name} subtitle={prod.cedula} />
                     <Card.Content>
                         {/* <Text variant="titleLarge">{prod.title}</Text> */}
-                        <Text variant="bodyMedium">{prod.Category}</Text>
+                        <Text variant="bodyMedium">{prod.correo}</Text>
                     </Card.Content>
 
                 </Card>
@@ -39,13 +29,13 @@ export const TarjetaProducto = (props) => {
 
 
     return <FlatList
-        data={props.productos}
+        data={props.clientes}
         renderItem={(e) => {
 
             return (
                 <View style={styles.container}>
                     <ScrollView >
-                        <ItemProduct
+                        <ItemClient
                             indice={e.index}
                             prod={e.item}
                         />
