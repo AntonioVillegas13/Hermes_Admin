@@ -32,9 +32,9 @@ const Administrador = () => {
       let iconName;
 
       if (route.name === 'TabProductosAdmin') {
-        iconName = "pencil-square-o"
+        iconName = "shopping-cart"
       } else if (route.name === 'TabPedidosAdmin') {
-        iconName = "shopping-cart";
+        iconName = "list-alt";
       }
 
       // You can return any component that you like here!
@@ -58,7 +58,8 @@ const Administrador = () => {
       name="TabPedidosAdmin"
       component={AdminPedidos}
       options={{
-        title: "PedidosAdminstrador"
+        headerShown: false,
+        title: "Pedidos"
 
       }}
     />
@@ -66,7 +67,7 @@ const Administrador = () => {
       name="TabProductosAdmin"
       component={ModProducto}
       options={{
-        title: "PedidosAdminstrador"
+        title: "Productos"
 
       }}
     />
@@ -95,8 +96,8 @@ const ModProducto = () => {
       name="TabProductosAdmin"
       component={Productos}
       options={{
-        title: "PedidosAdminstrador"
-
+        title: "PedidosAdminstrador",
+        headerShown: false,
       }}
     />
 
