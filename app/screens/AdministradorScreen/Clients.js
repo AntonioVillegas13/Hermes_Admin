@@ -36,6 +36,7 @@ export function Clientes({ navigation }) {
         <View style={styles.cajaCuerpo}>
             <TarjetaCliente
                 clientes={clientes}
+                funcionCliente={setClientes}
 
             />
         </View>
@@ -44,7 +45,7 @@ export function Clientes({ navigation }) {
                 icon="plus"
                 style={styles.fab}
                 onPress={() => {
-                    navigation.navigate("AddProdNav")
+                    navigation.navigate("RegistrarNav")
 
 
                 }}

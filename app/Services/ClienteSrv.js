@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, setDoc, addDoc } from 'firebase/firestore'
+import { collection, doc, getDocs,deleteDoc, setDoc, addDoc } from 'firebase/firestore'
 
 
 export const guardarCliente = (cliente) => {
@@ -26,3 +26,15 @@ export const consultarClientes = async (fnsetCliente) => {
     console.log("pediFunc", ClienteArray);
 
 }
+
+export const EliminarCliente = async (id,fnsetCliente,Clientes) => {
+
+    const updatedCliente = Clientes.filter((service) => service.identificacion !== id);
+
+    fnsetCliente(updatedCliente);
+    console.log("------------------------------",id)
+    await deleteDoc(doc(global.dbCon, "Usuarios", id));
+
+    console.log("------------------------------------------------funcion eliminada",updatedCliente)
+
+};

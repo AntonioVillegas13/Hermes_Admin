@@ -22,7 +22,7 @@ import theme from './app/theme/theme';
 
 const StackMoProd = createNativeStackNavigator();
 const LoginStack = createNativeStackNavigator();
-
+const StackClient = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 
@@ -74,9 +74,9 @@ const Administrador = () => {
 
       }}
     />
-     <Tab.Screen
+    <Tab.Screen
       name="Clientes"
-      component={Clientes}
+      component={ClientesTAB}
       options={{
         title: "Clientes"
 
@@ -90,6 +90,27 @@ const Administrador = () => {
 
 }
 
+const ClientesTAB = () => {
+  return <StackClient.Navigator>
+     <StackClient.Screen
+      name="Clientes"
+      component={Clientes}
+      options={{
+        title: "Clientes"
+
+      }}
+    />
+     <StackClient.Screen
+      name="RegistrarNav"
+      options={{
+        headerShown: false
+      }}
+      component={Registrar} />
+
+
+  </ StackClient.Navigator>
+
+}
 
 
 const ModProducto = () => {
@@ -111,14 +132,14 @@ const ModProducto = () => {
         headerShown: false
       }}
       component={ModProd} />
-    
+
     <StackMoProd.Screen
       name="AddProdNav"
       options={{
         headerShown: false
       }}
       component={AddProd} />
-    
+
 
 
   </StackMoProd.Navigator>
@@ -194,7 +215,7 @@ export default function App() {
 
 
     <NavigationContainer>
-      {Login ? <Administrador /> : <Administrador />}
+      {Login ? <Administrador /> : <LoginNav />}
       {/* //Administrador ClientesTab */}
     </NavigationContainer>
 

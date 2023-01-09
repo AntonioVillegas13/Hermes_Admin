@@ -1,12 +1,20 @@
 import { FlatList, ScrollView, TouchableHighlight, StyleSheet, View } from "react-native";
 import { Card, Button, Text } from 'react-native-paper';
+import { EliminarCliente } from "../Services/ClienteSrv";
 export const TarjetaCliente = (props) => {
 
     let ItemClient = ({ prod, indice }) => {
         return (
             <TouchableHighlight onPress={() => {
-                props.navegar.navigate("ModProdNav", { titulo: prod.title, precio: prod.price, categoria: prod.Category, id: prod.id })
-            }}>
+                console.log("entre")
+            }}
+            onLongPress={()=>{
+                console.log("entre largo")
+                EliminarCliente(prod.identificacion,props.funcionCliente,props.clientes)
+
+            }}
+            
+            >
                 <Card>
 
                     <Card.Title title={prod.name} subtitle={prod.cedula} />
@@ -46,7 +54,7 @@ export const TarjetaCliente = (props) => {
 
             )
         }}
-        keyExtractor={(item) => { return item.id }}
+        keyExtractor={(item) => { return item.cedula }}
 
     />
 
