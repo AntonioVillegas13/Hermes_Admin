@@ -12,9 +12,13 @@ export function Productos({ navigation }) {
 
     useEffect(() => {
         RecuperarProductos();
-    }, [productos])
+        const willFocusSubscription = navigation.addListener("focus", () => {
+            RecuperarProductos();
+          });
+          return willFocusSubscription;
+    }, [])
 
-
+   
 
     const RecuperarProductos = () => {
 
