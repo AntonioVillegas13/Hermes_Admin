@@ -18,6 +18,7 @@ import { Productos } from './app/screens/AdministradorScreen/Productos'
 import { ModProd } from './app/screens/AdministradorScreen/ModProd';
 import { AddProd } from './app/screens/AdministradorScreen/AgregarProductoScreen';
 import { Clientes } from './app/screens/AdministradorScreen/Clients';
+import { RegistrarNuevo } from './app/screens/AdministradorScreen/RegistrarUsuarioNuevo';
 import theme from './app/theme/theme';
 
 const StackMoProd = createNativeStackNavigator();
@@ -105,7 +106,7 @@ const ClientesTAB = () => {
       options={{
         headerShown: false
       }}
-      component={Registrar} />
+      component={RegistrarNuevo} />
 
 
   </ StackClient.Navigator>

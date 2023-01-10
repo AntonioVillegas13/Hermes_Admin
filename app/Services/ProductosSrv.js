@@ -17,7 +17,7 @@ export const guardar2 = (producto) => {
 
 export const consultar = async (fnsetPedidos) => {
     //console.log("globla",global.dbCon);
-    const productoRef = collection(global.dbCon, "Cliente");
+    const productoRef = collection(global.dbCon, "Pedidos");
     const SnapPedidos = await getDocs(productoRef);
     let PedidoArray = []
     SnapPedidos.forEach((documento) => {
