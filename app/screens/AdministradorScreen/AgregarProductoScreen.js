@@ -42,6 +42,8 @@ export function AddProd({ route, navigation }) {
             value={Idaux}
             onChangeText={setId}
             mode="outlined"
+            maxLength="25"
+
         />
 
         <TextInput
@@ -49,6 +51,8 @@ export function AddProd({ route, navigation }) {
             value={tituloaux}
             onChangeText={setTitulo}
             mode="outlined"
+            maxLength="25"
+
         />
 
 
@@ -57,6 +61,8 @@ export function AddProd({ route, navigation }) {
             value={precioaux}
             onChangeText={setPrecio}
             mode="outlined"
+            maxLength="25"
+
         />
 
         <TextInput
@@ -64,6 +70,8 @@ export function AddProd({ route, navigation }) {
             value={categoriaaux}
             onChangeText={setCategoria}
             mode="outlined"
+            maxLength="25"
+
         />
 
         <View style={styles.cajaBotones}>

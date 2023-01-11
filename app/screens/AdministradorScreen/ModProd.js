@@ -50,6 +50,8 @@ export function ModProd({ route, navigation }) {
             value={tituloaux}
             onChangeText={setTitulo}
             mode="outlined"
+            maxLength="25"
+
         />
 
 
@@ -58,6 +60,8 @@ export function ModProd({ route, navigation }) {
             value={precioaux}
             onChangeText={setPrecio}
             mode="outlined"
+            maxLength="25"
+
         />
 
         <TextInput
@@ -65,6 +69,8 @@ export function ModProd({ route, navigation }) {
             value={categoriaaux}
             onChangeText={setCategoria}
             mode="outlined"
+            maxLength="25"
+
         />
         <View style={styles.cajaBotones}>
             <Button

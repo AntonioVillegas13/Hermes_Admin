@@ -16,13 +16,13 @@ export const Registrar = ({ navigation }) => {
     const [uid, setuid] = useState("");
     const [cambiarOjo, setCambiarOjo] = useState(false);
     const [cambiarOjo2, setCambiarOjo2] = useState(false);
-    
+
     const [hasErrorusuario, sethasErrorusuario] = useState(false)
     const [hasErrorcedula, sethasErrorcedula] = useState(false)
     const [hasErrorcorreo, sethasErrorcorreo] = useState(false)
     const [hasErrorclave, sethasErrorclave] = useState(false)
     const [hasErrorconfirmacion, sethasErrorconfirmacion] = useState(false)
-    
+
     const [mensajeUsuario, setmensajeusuario] = useState("")
     const [mensajeCedula, setmensajecedula] = useState("")
     const [mensajeCorreo, setmensajecorreo] = useState("")
@@ -43,7 +43,7 @@ export const Registrar = ({ navigation }) => {
         if (cedula == null || cedula == "") {
             sethasErrorcedula(true)
             setmensajecedula("Ingrese una contraseña")
-            
+
         } else {
             sethasErrorcedula(false)
 
@@ -71,11 +71,11 @@ export const Registrar = ({ navigation }) => {
             sethasErrorclave(false)
 
         }
-        
-        if(hasErrorconfirmacion &&hasErrorclave &&hasErrorcorreo&&hasErrorcedula&&hasErrorusuario){
+
+        if (hasErrorconfirmacion && hasErrorclave && hasErrorcorreo && hasErrorcedula && hasErrorusuario) {
             Alert.alert("no se creo")
-            return null;ss
-        }else{
+            return null; ss
+        } else {
             crearUsuario();
         }
 
@@ -111,6 +111,7 @@ export const Registrar = ({ navigation }) => {
                 onChangeText={setCedula}
                 keyboardType="numeric"
                 mode="outlined"
+                maxLength="10"
                 lefIcon={
                     <Icon
                         name="user"
@@ -121,6 +122,7 @@ export const Registrar = ({ navigation }) => {
 
                 }
 
+
             />
             <TextInput
                 value={usuario}
@@ -128,6 +130,8 @@ export const Registrar = ({ navigation }) => {
                 onChangeText={setUsuario}
                 KeyboardType="email-address"
                 mode="outlined"
+                maxLength="35"
+
                 lefIcon={
                     <Icon
                         name="user"
@@ -145,6 +149,7 @@ export const Registrar = ({ navigation }) => {
                 onChangeText={setCorreo}
                 KeyboardType="email-address"
                 mode="outlined"
+                maxLength="25"
                 lefIcon={
                     <Icon
                         name="user"
@@ -162,6 +167,7 @@ export const Registrar = ({ navigation }) => {
                 onChangeText={setClave}
                 KeyboardType="email-address"
                 mode="outlined"
+                maxLength="15"
                 secureTextEntry={cambiarOjo}
                 right={
                     cambiarOjo ? <TextInput.Icon icon="eye"
@@ -184,6 +190,7 @@ export const Registrar = ({ navigation }) => {
                 onChangeText={setConfirmar}
                 KeyboardType="email-address"
                 mode="outlined"
+                maxLength="15"
                 secureTextEntry={cambiarOjo2}
                 right={
                     cambiarOjo2 ? <TextInput.Icon icon="eye"

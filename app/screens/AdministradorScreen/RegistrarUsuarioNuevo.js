@@ -111,6 +111,7 @@ export const RegistrarNuevo = ({ navigation }) => {
                 onChangeText={setCedula}
                 keyboardType="numeric"
                 mode="outlined"
+                maxLength="10"
                 lefIcon={
                     <Icon
                         name="user"

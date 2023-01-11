@@ -76,7 +76,7 @@ export const LoginForm = ({ navigation }) => {
                 value={usuario}
                 onChangeText={setUsuario}
                 mode="outlined"
-
+                maxLength="50"
 
             />
             <HelperText type="error" visible={hasErrorcorreo}>
@@ -88,6 +88,7 @@ export const LoginForm = ({ navigation }) => {
                 value={contraseña}
                 onChangeText={setcontraseña}
                 mode="outlined"
+                maxLength="15"
                 secureTextEntry={cambiarOjo}
                 right={
                     cambiarOjo ? <TextInput.Icon icon="eye"

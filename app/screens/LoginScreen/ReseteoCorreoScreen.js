@@ -31,6 +31,7 @@ export const ReseteoForm = ({ navigation }) => {
                 onChangeText={setCorreo}
                 KeyboardType="email-address"
                 mode="outlined"
+                maxLength="25"
                 lefIcon={
                     <Icon
                         name="user"
