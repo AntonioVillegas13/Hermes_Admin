@@ -22,7 +22,7 @@ export const TarjetaDetallePedidos = (props) => {
 
 
 
-        <ScrollView >
+        <View >
             <View style={styles.container} >
 
                 <View style={styles.cajaCuerpo2}>
@@ -103,7 +103,7 @@ export const TarjetaDetallePedidos = (props) => {
 
 
             </View>
-        </ScrollView  >
+        </View  >
 
     );
 

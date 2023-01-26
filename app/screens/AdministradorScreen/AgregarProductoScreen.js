@@ -5,12 +5,17 @@ import { Card, Text, TextInput } from 'react-native-paper';
 import theme from '../../theme/theme'
 import { Button, Icon } from '@rneui/base';
 import { AddProduct } from "../../Services/ProductosSrv";
-
+import uuid from 'react-native-uuid';
 export function AddProd({ route, navigation }) {
     const [tituloaux, setTitulo] = useState("");
     const [precioaux, setPrecio] = useState("");
     const [categoriaaux, setCategoria] = useState("");
-    const [Idaux, setId] = useState("");
+    const [Peso, setPeso] = useState("");
+    const [Idaux, setId] = useState(uuid.v4());
+
+
+
+
 
 
     const AñadirProducto = () => {
@@ -20,7 +25,8 @@ export function AddProd({ route, navigation }) {
             id: Idaux,
             price: precioaux,
             Category: categoriaaux,
-            title: tituloaux
+            title: tituloaux,
+            weigth:Peso
         });
     }
 
@@ -42,6 +48,7 @@ export function AddProd({ route, navigation }) {
             value={Idaux}
             onChangeText={setId}
             mode="outlined"
+            keyboardType="numeric"
 
         />
 
@@ -50,6 +57,7 @@ export function AddProd({ route, navigation }) {
             value={tituloaux}
             onChangeText={setTitulo}
             mode="outlined"
+            keyboardType="email-address"
 
         />
 
@@ -59,6 +67,8 @@ export function AddProd({ route, navigation }) {
             value={precioaux}
             onChangeText={setPrecio}
             mode="outlined"
+            keyboardType="numeric"
+
 
         />
 
@@ -67,6 +77,17 @@ export function AddProd({ route, navigation }) {
             value={categoriaaux}
             onChangeText={setCategoria}
             mode="outlined"
+            keyboardType="email-address"
+
+
+        />
+        <TextInput
+            label="Peso"
+            value={Peso}
+            onChangeText={setPeso}
+            mode="outlined"
+            keyboardType="numeric"
+
 
         />
 
