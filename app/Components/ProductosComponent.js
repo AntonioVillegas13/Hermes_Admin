@@ -1,15 +1,23 @@
+import { useState } from "react";
 import { FlatList, ScrollView, TouchableHighlight, StyleSheet, View } from "react-native";
 import { Card, Button, Text } from 'react-native-paper';
 export const TarjetaProducto = (props) => {
 
 
 
+    
+    const [Image, setImage1] = useState('')
 
 
 
+    
 
 
     let ItemProduct = ({ prod, indice }) => {
+
+
+
+        
 
         return (
 
@@ -17,8 +25,8 @@ export const TarjetaProducto = (props) => {
                 props.navegar.navigate("ModProdNav",{titulo:prod.title,precio:prod.price,categoria:prod.Category,id:prod.id})
             }}>
                 <Card>
-
-                    <Card.Cover source={{ uri: 'https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000' }} />
+                   
+                   {prod.uri ?  <Card.Cover source={{ uri:prod.uri }} /> : <Card.Cover source={{ uri:"https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
                     <Card.Title title={prod.title} subtitle={prod.price} />
                     <Card.Content>
                         {/* <Text variant="titleLarge">{prod.title}</Text> */}
