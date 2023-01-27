@@ -13,9 +13,10 @@ export function AddProd({ route, navigation }) {
     const [precioaux, setPrecio] = useState("");
     const [categoriaaux, setCategoria] = useState("");
     const [Peso, setPeso] = useState("");
-    const [Idaux, setId] = useState(uuid.v4());
     const [iamgeBase64, setImageBase64] = useState("");
-    const [Image, setImage1] = useState("")
+    const [Idaux, setId] = useState(uuid.v4());
+
+    
 
     const pickImages = async () => {
         let resultado = await ImagePicker.launchImageLibraryAsync({
@@ -34,19 +35,7 @@ export function AddProd({ route, navigation }) {
 
 
 
-    useEffect(() => {
-        console.log("*********************************",iamgeBase64)
-        if (iamgeBase64 != "") {
-
-            setImage1(iamgeBase64)
-            console.log("----------------------------------u0ri", iamgeBase64)
-        } else if (iamgeBase64 === "") {
-            console.log("*********************************ENTRO")
-            setImage1("https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=4000")
-        }
-
-    }, [iamgeBase64])
-
+    
 
     const AñadirProducto = () => {
         // SubirIamgen();
@@ -66,7 +55,8 @@ export function AddProd({ route, navigation }) {
 
     return <View style={styles.container}>
         <Card>
-            <Card.Cover source={{ uri: Image }} />
+        {iamgeBase64 ?  <Card.Cover source={{ uri:iamgeBase64}} /> : <Card.Cover source={{ uri:"https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
+           
             <Card.Title title={tituloaux} subtitle={categoriaaux} />
             <Card.Content>
                 {/* <Text variant="titleLarge">{prod.title}</Text> */}

@@ -29,22 +29,36 @@ export const DetallePedido = ({ route, navigation }) => {
 
     }
 
+
+    let tarjeta = () => {
+
+
+
+        return <View style={{ backgroundColor: "Red" }}>
+
+
+        </View>
+    }
+
     return (
         <View>
-            <Header back={() => navigation?.goBack()} />
-            <StyledText title bold center>Resumen de pedido</StyledText >
-
-
-
-
-            
             <ScrollView>
-                <TarjetaDetallePedidos
-                    item={id}
-                    objPedido={ObjPedido}
+                <Header back={() => navigation?.goBack()} />
+                <StyledText title bold center>Resumen de pedido</StyledText >
+                <View style={{ alignItems: "center" }}>
+                    {ObjPedido.estados == "true" ? <StyledText subtitle bold margin fondoColorVerde white>Pedido Regular</StyledText> : <StyledText subtitle fondoColorRojo bold white margin >Pedido Ugente</StyledText>}
+                </View>
 
 
-                />
+
+
+                <View>
+                    <TarjetaDetallePedidos
+                        item={id}
+                        objPedido={ObjPedido}
+                    />
+                </View>
+
 
             </ScrollView>
 

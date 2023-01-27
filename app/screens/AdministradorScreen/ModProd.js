@@ -5,38 +5,60 @@ import { Card, Text, TextInput } from 'react-native-paper';
 import theme from '../../theme/theme'
 import { Button, Icon } from '@rneui/base';
 import { CambiarProducto } from "../../Services/ProductosSrv";
+import * as ImagePicker from "expo-image-picker"
 
 export function ModProd({ route, navigation }) {
     const [tituloaux, setTitulo] = useState("");
     const [precioaux, setPrecio] = useState("");
     const [categoriaaux, setCategoria] = useState("");
     const [Idaux, setId] = useState("");
+    const [Peso, setPeso] = useState("");
+    const [iamgeBase64, setImageBase64] = useState("");
 
 
 
-
-    const ActualizarProducto=()=>{
+    const ActualizarProducto = () => {
         CambiarProducto({
-            id:id,
-            price:precioaux,
-            Category:categoriaaux,
-            title:tituloaux
+            id: id,
+            price: precioaux,
+            Category: categoriaaux,
+            title: tituloaux,
+            weigth: Peso,
+            uri: iamgeBase64
         });
 
     }
-    const { titulo, precio, categoria,id } = route.params;
+    const { titulo, precio, categoria, id,peso } = route.params;
     useEffect(() => {
         setPrecio(precio);
         setTitulo(titulo)
         setCategoria(categoria)
         setId(id)
+        setPeso(peso)
     }, [])
+
+
+
+    const pickImages = async () => {
+        let resultado = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            selectionLimit: 1,
+            aspect: [4, 3],
+            quality: 1,
+            // base64:true
+
+        })
+        let aim=resultado.assets
+        console.log("Imagen Uri:", aim.uri)
+        setImageBase64(resultado.uri)
+    }
 
 
 
     return <View style={styles.container}>
         <Card>
-            <Card.Cover source={{ uri: 'https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=4000' }} />
+        {iamgeBase64 ?  <Card.Cover source={{ uri:iamgeBase64}} /> : <Card.Cover source={{ uri:"https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
+           
             <Card.Title title={tituloaux} subtitle={categoriaaux} />
             <Card.Content>
                 {/* <Text variant="titleLarge">{prod.title}</Text> */}
@@ -59,6 +81,8 @@ export function ModProd({ route, navigation }) {
             value={precioaux}
             onChangeText={setPrecio}
             mode="outlined"
+            keyboardType="numeric"
+
 
         />
 
@@ -69,11 +93,36 @@ export function ModProd({ route, navigation }) {
             mode="outlined"
 
         />
+
+        <TextInput
+            label="Peso"
+            value={Peso}
+            onChangeText={setPeso}
+            mode="outlined"
+            keyboardType="numeric"
+
+
+        />
+        
+
+       
         <View style={styles.cajaBotones}>
             <Button
                 title='Modificar Producto'
                 onPress={() => {
                     ActualizarProducto();
+                    navigation.goBack();
+                }}
+                buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
+                containerStyle={{
+                    width: 200,
+                    paddingTop: 40
+                }}
+            />
+             <Button
+                title='Agregar Imagen'
+                onPress={() => {
+                    pickImages();
                 }}
                 buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
                 containerStyle={{

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { FlatList, ScrollView, TouchableHighlight, StyleSheet, View, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import theme from "../theme/theme";
 import PedidoCard from "./PedidoCard";
 import StyledText from "./StyledText";
@@ -9,31 +10,31 @@ export const TarjetaDetallePedidos = (props) => {
 
     const Pedido = props.item;
     const ObjPedido = props.objPedido
-
-    useEffect(() => {
-        console.log("PEDIDO", Pedido);
-    }, [])
+    console.log("PEDIDO", ObjPedido.estados);
 
 
 
 
-    return (
 
+    return ( <SafeAreaView style={styles.container}>
+        <ScrollView >
 
-
-
-        <View >
+        
             <View style={styles.container} >
 
                 <View style={styles.cajaCuerpo2}>
                     <View style={styles.itemsResumen2}>
-                        <StyledText subtitle bold white margin >Nombre:</StyledText>
-                        <StyledText subtitle bold white margin >{ObjPedido.nombre}</StyledText>
+                        <StyledText body bold white margin >Nombre:</StyledText>
+                        <StyledText body bold white margin >{ObjPedido.nombre}</StyledText>
                     </View>
 
                     <View style={styles.itemsResumen2}>
-                        <StyledText subtitle bold white margin >Cedula:</StyledText>
-                        <StyledText subtitle bold white margin >{ObjPedido.cedula}</StyledText>
+                        <StyledText body  bold white margin >Cedula:</StyledText>
+                        <StyledText body  bold white margin >{ObjPedido.cedula}</StyledText>
+                    </View>
+                    <View style={styles.itemsResumen2}>
+                        <StyledText body  bold white margin >Correo:</StyledText>
+                        <StyledText body bold white margin >{ObjPedido.correo}</StyledText>
                     </View>
 
                 </View>
@@ -103,7 +104,9 @@ export const TarjetaDetallePedidos = (props) => {
 
 
             </View>
-        </View  >
+
+            </ScrollView>
+    </SafeAreaView>
 
     );
 

@@ -53,9 +53,11 @@ export function AdminPedidos({ navigation }) {
 
         <View style={styles.cajaCabecera} >
 
-            <Text style={{ fontSize: 42 }}>Pedidos</Text>
-            <Text style={{ fontSize: 42 }}>Generales</Text>
+            <Text style={{ fontSize: 40 }}>Pedidos Generales</Text>
+            
         </View>
+
+        
         <View style={styles.cajaCuerpo} >
             <TarjetaPedidos pedidos={pedidos} navegar={navigation}/>
         </View>
@@ -150,8 +152,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        marginBottom: 50,
-        paddingTop: 75,
+        paddingTop:40
+        
     },
     cajaCuerpo: {
         // backgroundColor: 'brown',
