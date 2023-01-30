@@ -1,6 +1,6 @@
 import { FlatList, ScrollView, TouchableHighlight, StyleSheet, View, Text } from "react-native";
 
-export const TarjetaPedidos = (props) => {
+export const TarjetaPedidosProcesados = (props) => {
 
 
 
@@ -15,7 +15,7 @@ export const TarjetaPedidos = (props) => {
             <ScrollView style={styles.impar} >
                 <TouchableHighlight onPress={() => {
                     console.log("prod----------------------------------", prod.id)
-                    props.navegar.navigate('StackDetalle', { id: prod.id })
+                    props.navegar.navigate('StackDetalleNopProcesado', { id: prod.id })
                 }}>
                     <View style={{ margin: 10 }}>
                         <View style={styles.ViewRow}>

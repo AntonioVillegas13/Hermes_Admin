@@ -7,7 +7,7 @@ import { Button, Icon } from '@rneui/base';
 import { AddProduct } from "../../Services/ProductosSrv";
 import uuid from 'react-native-uuid';
 import * as ImagePicker from "expo-image-picker"
-import { SubirIamgen } from "../../Services/ImagesSrv";
+import { SubirFoto, SubirIamgen } from "../../Services/ImagesSrv";
 export function AddProd({ route, navigation }) {
     const [tituloaux, setTitulo] = useState("");
     const [precioaux, setPrecio] = useState("");
@@ -131,6 +131,7 @@ export function AddProd({ route, navigation }) {
                 title='Agregar Imagen'
                 onPress={() => {
                     pickImages();
+                    SubirFoto();
                 }}
                 buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
                 containerStyle={{

@@ -22,8 +22,9 @@ import { RegistrarNuevo } from './app/screens/AdministradorScreen/RegistrarUsuar
 import theme from './app/theme/theme';
 import { DetallePedido } from './app/screens/AdministradorScreen/DetallePedido';
 import { PedidoContext } from './app/context/PedidosContext';
-
-
+import { ListaPedidosNoProcesados } from './app/screens/TiposPedidoScreen/PedidosNoProcesadosScreen';
+import { ListaPedidosProcesados } from './app/screens/TiposPedidoScreen/PedidosProcesadosScreen';
+import { DetallePedidoNopProcesado } from './app/screens/AdministradorScreen/DetallePedidoaNoProcesado';
 const StackMoProd = createNativeStackNavigator();
 const LoginStack = createNativeStackNavigator();
 const StackClient = createNativeStackNavigator();
@@ -90,6 +91,8 @@ const Administrador = () => {
     />
 
 
+
+
   </Tab.Navigator>
 
 
@@ -112,6 +115,32 @@ const StackPedidos = () => {
       options={{
         headerShown: false,
         title: "DetallePedidos"
+      }}
+    />
+    <StackerPedidos.Screen
+      name="StackDetalleNopProcesado"
+      component={DetallePedidoNopProcesado}
+      options={{
+        headerShown: false,
+        title: "DetallePedidos"
+      }}
+    />
+
+
+    <StackerPedidos.Screen
+      name="ListaPedidosProcesados"
+      component={ListaPedidosProcesados}
+      options={{
+        title: "Pedidos",
+
+      }}
+    />
+    <StackerPedidos.Screen
+      name="ListaPedidosNoProcesados"
+      component={ListaPedidosNoProcesados}
+      options={{
+        title: "Pedidos",
+
       }}
     />
 
@@ -213,7 +242,7 @@ export default function App() {
   }
   const [Login, setlogin] = useState(false);
 
-  const[user,setUser]=useState();
+  const [user, setUser] = useState();
 
   const registarObserver = () => {
     const auth = getAuth();

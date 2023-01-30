@@ -8,7 +8,7 @@ import { CambiarPedidoNoProcesado, consultarUnPedido } from "../../Services/Prod
 import StyledText from "../../Components/StyledText";
 import Header from "../../Components/Header";
 
-export const DetallePedido = ({ route, navigation }) => {
+export const DetallePedidoNopProcesado = ({ route, navigation }) => {
     const { id } = route.params;
     const [ObjPedido, setObjPedido] = useState({});
     useEffect(() => {
@@ -19,7 +19,7 @@ export const DetallePedido = ({ route, navigation }) => {
 
     const CambiarPedidoNoProcesadoD=()=>{
         let newObjet={
-            StatusPedido:true,
+            StatusPedido:false,
             cedula:ObjPedido.cedula,
             cedulaUsuario:ObjPedido.cedulaUsuario,
             codigo:ObjPedido.codigo,

@@ -1,27 +1,49 @@
 
-import Header from "../../Components/Header";
-import { useContext, useEffect, useState } from "react";
 import { View, Text, Alert, StyleSheet, FlatList, TouchableHighlight, ScrollView } from "react-native"
 import { Button, FAB } from "@rneui/base"
-
-import { TarjetaPedidos } from "../../Components/Pedidos";
-import { consultarPedidosGenerales } from "../../Services/AdminSrv";
+import { consultar, consultarProcesado } from "../../Services/ProductosSrv"
+import { useEffect, useState } from "react"
 import { cerrarSesion, RecuperarUsuario } from "../../Services/AutenticacionSrv";
 import theme from "../../theme/theme";
+import { TarjetaPedidos } from "../../Components/Pedidos";
 import { PedidoContext } from "../../context/PedidosContext";
+import { useContext } from 'react';
+import Header from "../../Components/Header";
+import { TarjetaPedidosProcesados } from "../../Components/PedidosProcesados";
 
-export function AdminPedidos({ navigation }) {
-   const {user,setUser}=useContext(PedidoContext);
-
+export const ListaPedidosProcesados = ({ navigation }) => {
+    const {user,setUser}=useContext(PedidoContext);
+    const[uid2,setUid]=useState("3");
     const [pedidos, setPedidos] = useState([]);
     let pedidos2;
 
 
 
     useEffect(() => {
+        
+       
+        const willFocusSubscription = navigation.addListener("focus", () => {
         recuperarUsuario();
-        recuperarProductos();
+
+            recuperarProductos();
+        });
+        return willFocusSubscription;
     }, [])
+
+
+    const recuperarProductos = async() => {
+        console.log("------------------------- Recuperar Producto")
+
+        console.log("recupernado datos ",uid2)
+        await consultarProcesado(setPedidos);
+        //console.log("OED", pedidos);
+        // console.log("Uid", global.userId )
+        // pedidos2 = pedidos.filter(item => item.codigo === "hX4gT8sDdRPCO5N6qt5mykIUa9g2")
+
+      
+
+
+    }
 
     const recuperarUsuario=async()=>{
         console.log("------------------------- Recuperar Usuario")
@@ -30,78 +52,43 @@ export function AdminPedidos({ navigation }) {
         console.log("UID2:",user)
     }
 
-
-
-    const recuperarProductos = () => {
-        console.log("-------------------------USERide")
-        consultarPedidosGenerales(setPedidos);
-        //console.log("OED", pedidos);
-        console.log("Uid", global.userIdLogin)
-        // pedidos2 = pedidos.filter(item => item.codigo === "hX4gT8sDdRPCO5N6qt5mykIUa9g2")
-
-        console.log("PEDIDOS2", pedidos2)
-        console.log("PEDIDOS", pedidos)
-
+    const Cerrar=()=>{
+        cerrarSesion();
+        setUser();
 
     }
 
 
-    const NavegarPedidoProcesado = () => {
-        navigation.navigate("ListaPedidosProcesados")
- 
-     }
- 
-     const NavegarPedidoNoProcesado = () => {
-         navigation.navigate("ListaPedidosNoProcesados")
-      
-     } 
 
 
     return <View style={styles.container}>
-        <Header  />
+                    <Header  />
 
         <View style={styles.cajaCabecera} >
 
-            <Text style={{ fontSize: 40 }}>Pedidos Generales</Text>
-            
+            <Text style={{ fontSize: theme.fontSize.title }}>PEDIDOS</Text>
         </View>
-
-        
         <View style={styles.cajaCuerpo} >
+
+
+            <TarjetaPedidosProcesados pedidos={pedidos} navegar={navigation} />
+
+        </View>
        
-            {/* <TarjetaPedidos pedidos={pedidos} navegar={navigation}/> */}
-            <Button
-                title='Pedidos Procesados'
-                color={theme.colors.jade}
-                onPress={NavegarPedidoProcesado}
 
-            />
-            <Button
-                title='Pedidos No Procesados'
-
-                color={theme.colors.morado}
-                onPress={NavegarPedidoNoProcesado}
-
-            />
-        </View>
-        <View style={styles.cajaBotones}>
-
-
-        
-        </View>
-      
     </View>
 
-}
 
+
+
+}
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff1',
+        backgroundColor: '#ffff',
         alignItems: 'stretch',
         justifyContent: 'flex-start'
-
     },
     impar: {
 
@@ -179,14 +166,14 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        paddingTop:40
-        
+        marginBottom: 50,
+        paddingTop:10,
     },
     cajaCuerpo: {
         // backgroundColor: 'brown',
-        flex: 3,
-        alignItems: 'center',
-        justifyContent: 'center'
+        flex: 5,
+        alignItems: 'stretch',
+        justifyContent: 'flex-start',
     },
     titulo: {
         fontSize: 16,

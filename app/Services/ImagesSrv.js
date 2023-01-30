@@ -1,21 +1,22 @@
-// // Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// // TODO: Add SDKs for Firebase products that you want to use
-// // https://firebase.google.com/docs/web/setup#available-libraries
+import { ref,  uploadBytes,  uploadString } from "firebase/storage";
 
-// // Your web app's Firebase configuration
-// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBA1gAmzWzLm7eNt5d40naFkWwBTMGE8BQ",
-//   authDomain: "prueba13112022.firebaseapp.com",
-//   projectId: "prueba13112022",
-//   storageBucket: "prueba13112022.appspot.com",
-//   messagingSenderId: "103190844507",
-//   appId: "1:103190844507:web:59547dc07ef5c7bf849b7e",
-//   measurementId: "G-ZECNVGR6J9"
-// };
 
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
+
+export const SubirFoto = () => {
+
+
+    const ImageRef = ref(global.storage, 'mountains.jpg');
+
+
+    // Base64 formatted string
+
+    const bytes = new Uint8Array([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21]);
+    uploadBytes(ImageRef, bytes).then((snapshot) => {
+      console.log('Uploaded an array!');
+    }).catch((e)=>{
+console.log("ERROR=>",e)
+
+    });
+}
+
+

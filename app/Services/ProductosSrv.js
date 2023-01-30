@@ -1,6 +1,6 @@
 
 
-import { collection, doc, getDocs, setDoc, addDoc, getDoc } from 'firebase/firestore'
+import { collection, doc, getDocs, setDoc, addDoc, getDoc, query, where } from 'firebase/firestore'
 
 
 export const guardar = (producto) => {
@@ -88,4 +88,60 @@ export const consultarUnPedido = async (id,fnsetObj) => {
     fnsetObj(PedidoObj);
     // console.log("productoFunc", PedidoObj);
 
+}
+
+
+export const consultarProcesado = async (fnsetPedidos) => {
+    
+    // console.log("global--------------------------------",Id);
+    // const productoRef = collection(global.dbCon, "Pedidos");
+    const productoRef= query(collection(global.dbCon, "Pedidos"), where("StatusPedido", "==", true));
+    const SnapPedidos = await getDocs(productoRef);
+    let PedidoArray = []
+    await SnapPedidos.forEach((documento) => {
+        console.log("doc", documento.data());
+       
+            console.log("doce-------------------", documento.data());
+            PedidoArray.push(documento.data());
+        
+
+
+
+    });
+
+    fnsetPedidos(PedidoArray)
+    console.log("pediFunc2", PedidoArray);
+
+}
+
+
+export const consultarNoProcesado = async (fnsetPedidos) => {
+    
+    // console.log("global--------------------------------",Id);
+    // const productoRef = collection(global.dbCon, "Pedidos");
+    const productoRef= query(collection(global.dbCon, "Pedidos"), where("StatusPedido", "==", false));
+
+    const SnapPedidos = await getDocs(productoRef);
+    let PedidoArray = []
+    await SnapPedidos.forEach((documento) => {
+        console.log("doc", documento.data());
+       
+            console.log("doce-------------------", documento.data());
+            PedidoArray.push(documento.data());
+        
+
+
+
+    });
+
+    fnsetPedidos(PedidoArray)
+    console.log("pediFunc2", PedidoArray);
+
+}
+
+
+export const CambiarPedidoNoProcesado=(PedidoAux)=>{
+    console.log(global.dbCon);
+    const productRef = doc(global.dbCon, "Pedidos", PedidoAux.id);
+    setDoc(productRef, PedidoAux);
 }
