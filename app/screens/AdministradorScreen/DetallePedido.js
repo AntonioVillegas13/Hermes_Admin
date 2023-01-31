@@ -13,7 +13,7 @@ export const DetallePedido = ({ route, navigation }) => {
     const [ObjPedido, setObjPedido] = useState({});
     useEffect(() => {
         consultar();
-       
+    
 
     }, [])
 

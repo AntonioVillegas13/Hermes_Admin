@@ -77,6 +77,7 @@ export const LoginForm = ({ navigation }) => {
                 onChangeText={setUsuario}
                 mode="outlined"
 
+
             />
             <HelperText type="error" visible={hasErrorcorreo}>
                 {errorCorreo}
@@ -90,7 +91,7 @@ export const LoginForm = ({ navigation }) => {
                 secureTextEntry={cambiarOjo}
                 right={
                     cambiarOjo ? <TextInput.Icon icon="eye"
-                        
+
                         onPress={() => {
                             setCambiarOjo(!cambiarOjo);
                             return false;
@@ -111,7 +112,7 @@ export const LoginForm = ({ navigation }) => {
         <View style={styles.cajaBotones}>
 
             <Button
-                title='Inciar Sesion'
+                title='Iniciar Sesion'
                 onPress={ValidarLogin}
                 buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.morado }}
                 containerStyle={{

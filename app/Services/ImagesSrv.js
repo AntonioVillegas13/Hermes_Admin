@@ -1,22 +1,32 @@
-import { ref,  uploadBytes,  uploadString } from "firebase/storage";
+import { ref,  uploadBytes,  uploadString,put} from "firebase/storage";
 
 
 
-export const SubirFoto = () => {
+export const SubirFoto =async (uri,id) => {
+  console.log("______________________________ID:",id)
+  const blob = await new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      resolve(xhr.response);
+    };
+    xhr.onerror = function(e) {
+      console.log(e);
+      reject(new TypeError('Network request failed'));
+    };
+    xhr.responseType = 'blob';
+    xhr.open('GET', uri, true);
+    xhr.send(null);
+  });
+    const ImageRef = ref(global.storage, 'image'+id+'.jpg');
 
 
-    const ImageRef = ref(global.storage, 'mountains.jpg');
-
-
-    // Base64 formatted string
-
-    const bytes = new Uint8Array([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21]);
-    uploadBytes(ImageRef, bytes).then((snapshot) => {
-      console.log('Uploaded an array!');
-    }).catch((e)=>{
-console.log("ERROR=>",e)
-
+    
+    
+    uploadBytes(ImageRef, blob).then((snapshot) => {
+      console.log('Uploaded a blob or file!',snapshot.metadata.downloadTokens);
     });
+    // We're done with the blob, close and release it
+    blob.close();
 }
 
 

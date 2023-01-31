@@ -31,7 +31,7 @@ export function Clientes({ navigation }) {
 
 
     return <View style={styles.container}>
-               <Header  />
+        <Header />
 
         <View style={styles.cajaCabecera}>
             <Text style={{ fontSize: 42 }}>Clientes</Text>
@@ -47,6 +47,7 @@ export function Clientes({ navigation }) {
             <FAB
                 icon="plus"
                 style={styles.fab}
+                
                 onPress={() => {
                     navigation.navigate("RegistrarNav")
 

@@ -28,7 +28,7 @@ export function ModProd({ route, navigation }) {
         });
 
     }
-    const { titulo, precio, categoria, id,peso } = route.params;
+    const { titulo, precio, categoria, id, peso } = route.params;
     useEffect(() => {
         setPrecio(precio);
         setTitulo(titulo)
@@ -48,7 +48,7 @@ export function ModProd({ route, navigation }) {
             // base64:true
 
         })
-        let aim=resultado.assets
+        let aim = resultado.assets
         console.log("Imagen Uri:", aim.uri)
         setImageBase64(resultado.uri)
     }
@@ -57,8 +57,8 @@ export function ModProd({ route, navigation }) {
 
     return <View style={styles.container}>
         <Card>
-        {iamgeBase64 ?  <Card.Cover source={{ uri:iamgeBase64}} /> : <Card.Cover source={{ uri:"https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
-           
+            {iamgeBase64 ? <Card.Cover source={{ uri: iamgeBase64 }} /> : <Card.Cover source={{ uri: "https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
+
             <Card.Title title={tituloaux} subtitle={categoriaaux} />
             <Card.Content>
                 {/* <Text variant="titleLarge">{prod.title}</Text> */}
@@ -72,7 +72,7 @@ export function ModProd({ route, navigation }) {
             value={tituloaux}
             onChangeText={setTitulo}
             mode="outlined"
-
+            maxLength={3}
         />
 
 
@@ -103,9 +103,9 @@ export function ModProd({ route, navigation }) {
 
 
         />
-        
 
-       
+
+
         <View style={styles.cajaBotones}>
             <Button
                 title='Modificar Producto'
@@ -119,7 +119,7 @@ export function ModProd({ route, navigation }) {
                     paddingTop: 40
                 }}
             />
-             <Button
+            <Button
                 title='Agregar Imagen'
                 onPress={() => {
                     pickImages();

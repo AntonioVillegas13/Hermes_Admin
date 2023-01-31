@@ -6,7 +6,7 @@ import theme from '../../theme/theme'
 import { Button, Icon } from '@rneui/base';
 import { AddProduct } from "../../Services/ProductosSrv";
 import uuid from 'react-native-uuid';
-import * as ImagePicker from "expo-image-picker"
+import * as ImagePicker from 'expo-image-picker';
 import { SubirFoto, SubirIamgen } from "../../Services/ImagesSrv";
 export function AddProd({ route, navigation }) {
     const [tituloaux, setTitulo] = useState("");
@@ -16,7 +16,7 @@ export function AddProd({ route, navigation }) {
     const [iamgeBase64, setImageBase64] = useState("");
     const [Idaux, setId] = useState(uuid.v4());
 
-    
+
 
     const pickImages = async () => {
         let resultado = await ImagePicker.launchImageLibraryAsync({
@@ -27,15 +27,17 @@ export function AddProd({ route, navigation }) {
             // base64:true
 
         })
-        let aim=resultado.assets
-        console.log("Imagen Uri:", aim.uri)
-        setImageBase64(resultado.uri)
+        let aim = resultado.assets
+        console.log("Imagen Uri:", resultado.assets[0].uri)
+        setImageBase64(resultado.assets[0].uri)
+        SubirFoto(resultado.assets[0].uri,Idaux);
+
     }
 
 
 
 
-    
+
 
     const AñadirProducto = () => {
         // SubirIamgen();
@@ -55,8 +57,8 @@ export function AddProd({ route, navigation }) {
 
     return <View style={styles.container}>
         <Card>
-        {iamgeBase64 ?  <Card.Cover source={{ uri:iamgeBase64}} /> : <Card.Cover source={{ uri:"https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
-           
+            {iamgeBase64 ? <Card.Cover source={{ uri: iamgeBase64 }} /> : <Card.Cover source={{ uri: "https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
+
             <Card.Title title={tituloaux} subtitle={categoriaaux} />
             <Card.Content>
                 {/* <Text variant="titleLarge">{prod.title}</Text> */}
@@ -131,7 +133,6 @@ export function AddProd({ route, navigation }) {
                 title='Agregar Imagen'
                 onPress={() => {
                     pickImages();
-                    SubirFoto();
                 }}
                 buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
                 containerStyle={{

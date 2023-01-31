@@ -26,7 +26,7 @@ export const TarjetaProducto = (props) => {
             }}>
                 <Card>
                    
-                   {prod.uri ?  <Card.Cover source={{ uri:prod.uri }} /> : <Card.Cover source={{ uri:"https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
+                   {prod.uri ?  <Card.Cover source={prod.uri} /> : <Card.Cover source={{ uri:"https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
                     <Card.Title title={prod.title} subtitle={prod.price} />
                     <Card.Content>
                         {/* <Text variant="titleLarge">{prod.title}</Text> */}
