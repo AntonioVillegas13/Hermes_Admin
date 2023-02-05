@@ -89,5 +89,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         flex: 1
+    }, fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
     }
 });
