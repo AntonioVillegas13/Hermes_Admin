@@ -60,7 +60,7 @@ export const TarjetaCliente = (props) => {
 
             )
         }}
-        keyExtractor={(item) => { return item.cedula }}
+        keyExtractor={(item) => { return item.identificacion }}
 
     />
 

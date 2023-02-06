@@ -15,7 +15,7 @@ export function AddProd({ route, navigation }) {
     const [Peso, setPeso] = useState("");
     const [iamgeBase64, setImageBase64] = useState("");
     const [Idaux, setId] = useState(uuid.v4());
-    const [Url, setUrl]=useState("")
+    const [Url, setUrl] = useState("")
 
 
 
@@ -28,11 +28,10 @@ export function AddProd({ route, navigation }) {
             // base64:true
 
         })
-        let aim = resultado.assets
         console.log("Imagen Uri:", resultado.assets[0].uri)
         await setImageBase64(resultado.assets[0].uri)
-        await  SubirFoto(resultado.assets[0].uri,Idaux,setUrl);
-      
+        await SubirFoto(resultado.assets[0].uri, Idaux, setUrl);
+
     }
 
 
@@ -42,15 +41,14 @@ export function AddProd({ route, navigation }) {
 
     const AñadirProducto = () => {
         // SubirIamgen();
-        console.log("NUEVO URL",Url)
+        console.log("NUEVO URL", Url)
         AddProduct({
             id: Idaux,
             price: precioaux,
             Category: categoriaaux,
             title: tituloaux,
             weigth: Peso,
-            uri: iamgeBase64,
-            url:Url
+            url: Url
 
 
         });
@@ -60,7 +58,7 @@ export function AddProd({ route, navigation }) {
 
     return <View style={styles.container}>
         <Card>
-            {iamgeBase64 ? <Card.Cover source={{ uri: iamgeBase64 }} /> : <Card.Cover source={{ uri: "https://firebasestorage.googleapis.com/v0/b/prueba13112022.appspot.com/o/image13e8340c-b35c-43c5-bad4-0bd4b162bf06.jpg?alt=media&token=e0bbd549-adea-498f-827f-83e7266098e7" }} />}
+            {Url ? <Card.Cover source={{ uri: Url }} /> : <Card.Cover source={{ uri: "https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
 
             <Card.Title title={tituloaux} subtitle={categoriaaux} />
             <Card.Content>
@@ -84,7 +82,7 @@ export function AddProd({ route, navigation }) {
             value={tituloaux}
             onChangeText={setTitulo}
             mode="outlined"
-            keyboardType="email-address"
+            keyboardType="default"
 
         />
 
@@ -104,7 +102,8 @@ export function AddProd({ route, navigation }) {
             value={categoriaaux}
             onChangeText={setCategoria}
             mode="outlined"
-            keyboardType="email-address"
+            keyboardType="default"
+
 
 
         />

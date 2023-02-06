@@ -6,6 +6,7 @@ import theme from '../../theme/theme'
 import { Button, Icon } from '@rneui/base';
 import { CambiarProducto } from "../../Services/ProductosSrv";
 import * as ImagePicker from "expo-image-picker"
+import { SubirFoto } from "../../Services/ImagesSrv";
 
 export function ModProd({ route, navigation }) {
     const [tituloaux, setTitulo] = useState("");
@@ -14,27 +15,30 @@ export function ModProd({ route, navigation }) {
     const [Idaux, setId] = useState("");
     const [Peso, setPeso] = useState("");
     const [iamgeBase64, setImageBase64] = useState("");
-
+    const [Url, setUrl] = useState("")
 
 
     const ActualizarProducto = () => {
+        
         CambiarProducto({
             id: id,
             price: precioaux,
             Category: categoriaaux,
             title: tituloaux,
             weigth: Peso,
-            uri: iamgeBase64
+            uri: iamgeBase64,
+             url:Url
         });
 
     }
-    const { titulo, precio, categoria, id, peso } = route.params;
+    const { titulo, precio, categoria, id, peso,url } = route.params;
     useEffect(() => {
         setPrecio(precio);
         setTitulo(titulo)
         setCategoria(categoria)
         setId(id)
         setPeso(peso)
+        setUrl(url)
     }, [])
 
 
@@ -45,19 +49,19 @@ export function ModProd({ route, navigation }) {
             selectionLimit: 1,
             aspect: [4, 3],
             quality: 1,
-            // base64:true
+           allowsEditing:true
 
         })
-        let aim = resultado.assets
-        console.log("Imagen Uri:", aim.uri)
-        setImageBase64(resultado.uri)
+        console.log("Imagen Uri:", resultado.assets[0].uri)
+        await setImageBase64(resultado.assets[0].uri)
+        await  SubirFoto(resultado.assets[0].uri,Idaux,setUrl);
     }
 
 
 
     return <View style={styles.container}>
         <Card>
-            {iamgeBase64 ? <Card.Cover source={{ uri: iamgeBase64 }} /> : <Card.Cover source={{ uri: "https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
+            {Url ? <Card.Cover source={{ uri: Url }} /> : <Card.Cover source={{ uri: "https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
 
             <Card.Title title={tituloaux} subtitle={categoriaaux} />
             <Card.Content>
@@ -72,7 +76,7 @@ export function ModProd({ route, navigation }) {
             value={tituloaux}
             onChangeText={setTitulo}
             mode="outlined"
-            maxLength={3}
+            maxLength={40}
         />
 
 

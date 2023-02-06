@@ -277,6 +277,12 @@ export default function App() {
     <PedidoContext.Provider value={{ user, setUser }} >
 
       <NavigationContainer>
+        <StatusBar style={{
+          flex: 1,
+          backgroundColor: '#62CBDE',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }} />
         {Login ? <Administrador /> : <LoginNav />}
         {/* //Administrador ClientesTab */}
       </NavigationContainer>

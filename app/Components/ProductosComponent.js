@@ -22,7 +22,7 @@ export const TarjetaProducto = (props) => {
         return (
 
             <TouchableHighlight onPress={() => {
-                props.navegar.navigate("ModProdNav",{titulo:prod.title,precio:prod.price,categoria:prod.Category,id:prod.id,peso:prod.weigth})
+                props.navegar.navigate("ModProdNav",{titulo:prod.title,precio:prod.price,categoria:prod.Category,id:prod.id,peso:prod.weigth,url:prod.url})
             }}>
                 <Card>
                    
