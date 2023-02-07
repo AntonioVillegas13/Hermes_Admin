@@ -31,6 +31,7 @@ export const DetallePedidoNopProcesado = ({ route, navigation }) => {
             productosArray:ObjPedido.productosArray,
             subTotal:ObjPedido.subTotal,
             total:ObjPedido.total
+            
         }
 
         CambiarPedidoNoProcesado(newObjet);
@@ -39,7 +40,7 @@ export const DetallePedidoNopProcesado = ({ route, navigation }) => {
 
 
         await consultarUnPedido(id, setObjPedido);
-        console.log("---------------------------OBJPedido", ObjPedido)
+        console.log("---------------------------OBJPedido", ObjPedido.url)
 
     }
 
@@ -52,7 +53,7 @@ export const DetallePedidoNopProcesado = ({ route, navigation }) => {
                 <Header back={() => navigation?.goBack()} />
                 <StyledText title bold center>Resumen de pedido</StyledText >
                 <View style={{ alignItems: "center" }}>
-                    {ObjPedido.estados == "false" ? <StyledText subtitle bold margin fondoColorVerde white>   Pedido Regular   </StyledText> : <StyledText subtitle fondoColorRojo bold white margin >   Pedido Ugente   </StyledText>}
+                    {ObjPedido.estados == "false" ? <StyledText subtitle bold margin fondoColorVerde white>   Pedido Regular   </StyledText> : <StyledText subtitle fondoColorRojo bold white margin >   Pedido Urgente   </StyledText>}
                 </View>
 
 

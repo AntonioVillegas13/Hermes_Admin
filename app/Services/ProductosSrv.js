@@ -142,6 +142,7 @@ export const consultarNoProcesado = async (fnsetPedidos) => {
 
 export const CambiarPedidoNoProcesado=(PedidoAux)=>{
     console.log(global.dbCon);
+    console.log("-----------------------pediAux",PedidoAux)
     const productRef = doc(global.dbCon, "Pedidos", PedidoAux.id);
     setDoc(productRef, PedidoAux);
 }
