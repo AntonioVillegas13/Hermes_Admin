@@ -13,5 +13,10 @@ Para su instalacion solo basta descargarse la apk en el dispositivo móvil y cor
 </p>
 </div>
 
+### Credenciales para pruebas
+#### Usuario: anville73.24@gmail.com
+#### Contraseña: Vitabrevis1
+
+
 ### El manual de usuario se encuentra en el siguiente enlace:
 https://youtu.be/DnjOKJyJs2w
