@@ -10,7 +10,7 @@ export const TarjetaDetallePedidos = (props) => {
 
     const Pedido = props.item;
     const ObjPedido = props.objPedido
-    console.log("PEDIDO", ObjPedido.estados);
+    console.log("PEDIDO", ObjPedido);
 
 
 
@@ -25,7 +25,7 @@ export const TarjetaDetallePedidos = (props) => {
                 <View style={styles.cajaCuerpo2}>
                     <View style={styles.itemsResumen2}>
                         <StyledText body bold white margin >Nombre:</StyledText>
-                        <StyledText body bold white margin >{ObjPedido.nombre}</StyledText>
+                        <StyledText body bold white margin >Antonio Villegas</StyledText>
                     </View>
 
                     <View style={styles.itemsResumen2}>
@@ -91,15 +91,15 @@ export const TarjetaDetallePedidos = (props) => {
 
                 <View style={{ flexDirection: "row", justifyContent: 'space-between' }}>
                     <StyledText body  >TOTAL:</StyledText>
-                    <StyledText body >{ObjPedido.subTotal}</StyledText>
+                    <StyledText body >$ {ObjPedido.subTotal}</StyledText>
                 </View>
                 <View style={styles.itemsResumen}>
                     <StyledText body >Monto por envio urgente:</StyledText>
-                    <StyledText body >{ObjPedido.extra}</StyledText>
+                    <StyledText body >$ {parseFloat(ObjPedido.extra).toFixed(2)}</StyledText>
                 </View>
                 <View style={styles.itemsResumen}>
                     <StyledText body >Total:</StyledText>
-                    <StyledText body >{ObjPedido.total}</StyledText>
+                    <StyledText body >$ {ObjPedido.total}</StyledText>
                 </View>
 
 

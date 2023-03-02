@@ -7,6 +7,7 @@ import { Button, Icon } from '@rneui/base';
 import { CambiarProducto } from "../../Services/ProductosSrv";
 import * as ImagePicker from "expo-image-picker"
 import { SubirFoto } from "../../Services/ImagesSrv";
+import Header from "../../Components/Header";
 
 export function ModProd({ route, navigation }) {
     const [tituloaux, setTitulo] = useState("");
@@ -19,7 +20,7 @@ export function ModProd({ route, navigation }) {
 
 
     const ActualizarProducto = () => {
-        
+
         CambiarProducto({
             id: id,
             price: precioaux,
@@ -27,11 +28,11 @@ export function ModProd({ route, navigation }) {
             title: tituloaux,
             weigth: Peso,
             uri: iamgeBase64,
-             url:Url
+            url: Url
         });
 
     }
-    const { titulo, precio, categoria, id, peso,url } = route.params;
+    const { titulo, precio, categoria, id, peso, url } = route.params;
     useEffect(() => {
         setPrecio(precio);
         setTitulo(titulo)
@@ -49,92 +50,95 @@ export function ModProd({ route, navigation }) {
             selectionLimit: 1,
             aspect: [4, 3],
             quality: 1,
-           allowsEditing:true
+            allowsEditing: true
 
         })
         console.log("Imagen Uri:", resultado.assets[0].uri)
         await setImageBase64(resultado.assets[0].uri)
-        await  SubirFoto(resultado.assets[0].uri,Idaux,setUrl);
+        await SubirFoto(resultado.assets[0].uri, Idaux, setUrl);
     }
 
 
 
     return <View style={styles.container}>
-        <Card>
-            {Url ? <Card.Cover source={{ uri: Url }} /> : <Card.Cover source={{ uri: "https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
+        <ScrollView style={styles.scrollView}>
+            <Header />
+            <Card>
+                {Url ? <Card.Cover source={{ uri: Url }} /> : <Card.Cover source={{ uri: "https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
 
-            <Card.Title title={tituloaux} subtitle={categoriaaux} />
-            <Card.Content>
-                {/* <Text variant="titleLarge">{prod.title}</Text> */}
-                <Text variant="bodyMedium">{precioaux}</Text>
+                <Card.Title title={tituloaux} subtitle={categoriaaux} />
+                <Card.Content>
+                    {/* <Text variant="titleLarge">{prod.title}</Text> */}
+                    <Text variant="bodyMedium">{precioaux}</Text>
 
-            </Card.Content>
-        </Card>
+                </Card.Content>
+            </Card>
 
-        <TextInput
-            label="Nombre"
-            value={tituloaux}
-            onChangeText={setTitulo}
-            mode="outlined"
-            maxLength={40}
-        />
-
-
-        <TextInput
-            label="Precio"
-            value={precioaux}
-            onChangeText={setPrecio}
-            mode="outlined"
-            keyboardType="numeric"
-
-
-        />
-
-        <TextInput
-            label="Categoria"
-            value={categoriaaux}
-            onChangeText={setCategoria}
-            mode="outlined"
-
-        />
-
-        <TextInput
-            label="Peso"
-            value={Peso}
-            onChangeText={setPeso}
-            mode="outlined"
-            keyboardType="numeric"
-
-
-        />
-
-
-
-        <View style={styles.cajaBotones}>
-            <Button
-                title='Modificar Producto'
-                onPress={() => {
-                    ActualizarProducto();
-                    navigation.goBack();
-                }}
-                buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
-                containerStyle={{
-                    width: 200,
-                    paddingTop: 40
-                }}
+            <TextInput
+                label="Nombre"
+                value={tituloaux}
+                onChangeText={setTitulo}
+                mode="outlined"
+                maxLength={40}
             />
-            <Button
-                title='Agregar Imagen'
-                onPress={() => {
-                    pickImages();
-                }}
-                buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
-                containerStyle={{
-                    width: 200,
-                    paddingTop: 40
-                }}
+
+
+            <TextInput
+                label="Precio"
+                value={precioaux}
+                onChangeText={setPrecio}
+                mode="outlined"
+                keyboardType="numeric"
+
+
             />
-        </View>
+
+            <TextInput
+                label="Categoria"
+                value={categoriaaux}
+                onChangeText={setCategoria}
+                mode="outlined"
+
+            />
+
+            <TextInput
+                label="Peso"
+                value={Peso}
+                onChangeText={setPeso}
+                mode="outlined"
+                keyboardType="numeric"
+
+
+            />
+
+
+
+            <View style={styles.cajaBotones}>
+                <Button
+                    title='Modificar Producto'
+                    onPress={() => {
+                        ActualizarProducto();
+                        navigation.goBack();
+                    }}
+                    buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
+                    containerStyle={{
+                        width: 100,
+                        paddingTop: 40
+                    }}
+                />
+                <Button
+                    title='Agregar Imagen'
+                    onPress={() => {
+                        pickImages();
+                    }}
+                    buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
+                    containerStyle={{
+                        width: 100,
+                        paddingTop: 40
+                    }}
+                />
+            </View>
+        </ScrollView>
     </View>
 
 }
@@ -144,16 +148,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffff',
-        alignItems: 'stretch',
+        // alignItems: 'stretch',
         justifyContent: 'center',
         padding: 10,
         // backgroundColor: "gray"
     },
     cajaBotones: {
-        paddingBottom: 10,
+        padding: 10,
         alignItems: 'center',
-        justifyContent: 'flex-start',
-        flex: 4
-    }
+        justifyContent: 'space-between',
+        flex: 2,
+        flexDirection: "row"
+    },
+    scrollView: {
+        // backgroundColor: 'pink',
+        marginHorizontal: 10,
+    },
 
 });

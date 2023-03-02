@@ -11,7 +11,7 @@ import theme from "../../theme/theme";
 import { PedidoContext } from "../../context/PedidosContext";
 
 export function AdminPedidos({ navigation }) {
-   const {user,setUser}=useContext(PedidoContext);
+    const { user, setUser } = useContext(PedidoContext);
 
     const [pedidos, setPedidos] = useState([]);
     let pedidos2;
@@ -23,11 +23,11 @@ export function AdminPedidos({ navigation }) {
         recuperarProductos();
     }, [])
 
-    const recuperarUsuario=async()=>{
+    const recuperarUsuario = async () => {
         console.log("------------------------- Recuperar Usuario")
 
         await RecuperarUsuario(setUser);
-        console.log("UID2:",user)
+        console.log("UID2:", user)
     }
 
 
@@ -40,7 +40,7 @@ export function AdminPedidos({ navigation }) {
         // pedidos2 = pedidos.filter(item => item.codigo === "hX4gT8sDdRPCO5N6qt5mykIUa9g2")
 
         console.log("PEDIDOS2", pedidos2)
-        console.log("PEDIDOS", pedidos)
+        console.log("PEDIDOS", pedidos);
 
 
     }
@@ -48,27 +48,27 @@ export function AdminPedidos({ navigation }) {
 
     const NavegarPedidoProcesado = () => {
         navigation.navigate("ListaPedidosProcesados")
- 
-     }
- 
-     const NavegarPedidoNoProcesado = () => {
-         navigation.navigate("ListaPedidosNoProcesados")
-      
-     } 
+
+    }
+
+    const NavegarPedidoNoProcesado = () => {
+        navigation.navigate("ListaPedidosNoProcesados")
+
+    }
 
 
     return <View style={styles.container}>
-        <Header  />
+        <Header />
 
         <View style={styles.cajaCabecera} >
 
             <Text style={{ fontSize: 40 }}>Pedidos Generales</Text>
-            
+
         </View>
 
-        
+
         <View style={styles.cajaCuerpo} >
-       
+
             {/* <TarjetaPedidos pedidos={pedidos} navegar={navigation}/> */}
             <Button
                 title='Pedidos Procesados'
@@ -83,13 +83,21 @@ export function AdminPedidos({ navigation }) {
                 onPress={NavegarPedidoNoProcesado}
 
             />
+
+
         </View>
         <View style={styles.cajaBotones}>
 
+            <Button
+                title='Cerrar Sesion'
 
-        
+                color={theme.colors.morado}
+                onPress={cerrarSesion}
+
+            />
+
         </View>
-      
+
     </View>
 
 }
@@ -175,18 +183,20 @@ const styles = StyleSheet.create({
         margin: 10
     },
     cajaCabecera: {
-        //backgroundColor: 'cyan',
+        // backgroundColor: 'cyan',
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        paddingTop:40
-        
+        paddingTop: 40,
+
+
     },
     cajaCuerpo: {
         // backgroundColor: 'brown',
-        flex: 3,
+        flex: 2,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'space-around',
+
     },
     titulo: {
         fontSize: 16,
@@ -195,9 +205,9 @@ const styles = StyleSheet.create({
     },
     cajaBotones: {
         //backgroundColor: 'red',
-        paddingBottom: 10,
+        paddingBottom: 30,
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'flex-end',
         flex: 1
     }
 

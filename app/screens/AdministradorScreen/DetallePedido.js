@@ -13,25 +13,25 @@ export const DetallePedido = ({ route, navigation }) => {
     const [ObjPedido, setObjPedido] = useState({});
     useEffect(() => {
         consultar();
-    
+
 
     }, [])
 
-    const CambiarPedidoNoProcesadoD=()=>{
-        let newObjet={
-            StatusPedido:true,
-            cedula:ObjPedido.cedula,
-            cedulaUsuario:ObjPedido.cedulaUsuario,
-            codigo:ObjPedido.codigo,
-            correo:ObjPedido.correo,
-            estados:ObjPedido.estados,
-            extra:ObjPedido.extra,
-            id:ObjPedido.id,
-            nombre:ObjPedido.nombre,
-            productosArray:ObjPedido.productosArray,
-            subTotal:ObjPedido.subTotal,
-            total:ObjPedido.total,
-            
+    const CambiarPedidoNoProcesadoD = () => {
+        let newObjet = {
+            StatusPedido: true,
+            cedula: ObjPedido.cedula,
+            cedulaUsuario: ObjPedido.cedulaUsuario,
+            codigo: ObjPedido.codigo,
+            correo: ObjPedido.correo,
+            estados: ObjPedido.estados,
+            extra: ObjPedido.extra,
+            id: ObjPedido.id,
+            nombre: ObjPedido.nombre,
+            productosArray: ObjPedido.productosArray,
+            subTotal: ObjPedido.subTotal,
+            total: ObjPedido.total,
+
         }
 
         CambiarPedidoNoProcesado(newObjet);
@@ -45,7 +45,7 @@ export const DetallePedido = ({ route, navigation }) => {
     }
 
 
-    
+
 
     return (
         <View>
@@ -53,7 +53,7 @@ export const DetallePedido = ({ route, navigation }) => {
                 <Header back={() => navigation?.goBack()} />
                 <StyledText title bold center>Resumen de pedido</StyledText >
                 <View style={{ alignItems: "center" }}>
-                    {ObjPedido.estados == "false" ? <StyledText subtitle bold margin fondoColorVerde white>   Pedido Regular   </StyledText> : <StyledText subtitle fondoColorRojo bold white margin >   Pedido Urgente   </StyledText>}
+                    {ObjPedido.estados == "false" ? <StyledText subtitle bold margin fondoColorVerde white>   Regular   </StyledText> : <StyledText subtitle fondoColorRojo bold white margin >   Pedido Urgente   </StyledText>}
                 </View>
 
 
@@ -64,12 +64,12 @@ export const DetallePedido = ({ route, navigation }) => {
                         item={id}
                         objPedido={ObjPedido}
                     />
-              
+
                 </View>
 
 
                 <View>
-              
+
 
 
                 </View>
@@ -84,15 +84,20 @@ export const DetallePedido = ({ route, navigation }) => {
 
 
             <FAB
-                icon="plus"
+
+                icon={{ name: 'update', color: 'white' }}
+                color="#555273"
                 size="small"
                 placement="left"
-                style={{ position: 'absolute',
-                top: "94%",
-               }}
+               
+                style={{
+                    position: 'absolute',
+                    top: "94%",
+                    color: theme.colors.jade
+                }}
                 onPress={() => {
                     CambiarPedidoNoProcesadoD();
-                    
+
 
                 }}
             />

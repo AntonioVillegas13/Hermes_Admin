@@ -23,7 +23,7 @@ export const RegistrarNuevo = ({ navigation }) => {
     const [hasErrorclave, sethasErrorclave] = useState(false)
     const [hasErrorconfirmacion, sethasErrorconfirmacion] = useState(false)
 
-    const [mensajeUsuario, setmensajeusuario] = useState("")
+    const [user, setUser] = useState()
     const [mensajeCedula, setmensajecedula] = useState("")
     const [mensajeCorreo, setmensajecorreo] = useState("")
     const [mensajeclave, setmensajeclave] = useState("")
@@ -83,13 +83,15 @@ export const RegistrarNuevo = ({ navigation }) => {
 
 
     const crearUser = async () => {
-        await CrearUsuario(correo, clave);
+        await CrearUsuario(correo, clave,setUser);
+        console.log("---------------user",user)
        await guardarUSuario2({
             name: usuario,
             cedula: cedula,
             correo: correo,
             clave: clave,
             identificacion: global.userId
+            
         });
     }
     const crearUsuario = () => {

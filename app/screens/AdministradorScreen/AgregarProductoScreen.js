@@ -8,6 +8,8 @@ import { AddProduct } from "../../Services/ProductosSrv";
 import uuid from 'react-native-uuid';
 import * as ImagePicker from 'expo-image-picker';
 import { SubirFoto, SubirIamgen } from "../../Services/ImagesSrv";
+import Header from "../../Components/Header";
+import { TouchableOpacity } from "react-native-web";
 export function AddProd({ route, navigation }) {
     const [tituloaux, setTitulo] = useState("");
     const [precioaux, setPrecio] = useState("");
@@ -57,111 +59,120 @@ export function AddProd({ route, navigation }) {
 
 
     return <View style={styles.container}>
-        <Card>
-            {Url ? <Card.Cover source={{ uri: Url }} /> : <Card.Cover source={{ uri: "https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
+        <ScrollView style={styles.scrollView}>
+            <Header />
 
-            <Card.Title title={tituloaux} subtitle={categoriaaux} />
-            <Card.Content>
-                {/* <Text variant="titleLarge">{prod.title}</Text> */}
-                <Text variant="bodyMedium">{precioaux}</Text>
-
-            </Card.Content>
-        </Card>
-
-        <TextInput
-            label="Codigo"
-            value={Idaux}
-            onChangeText={setId}
-            mode="outlined"
-            keyboardType="numeric"
-
-        />
-
-        <TextInput
-            label="Nombre"
-            value={tituloaux}
-            onChangeText={setTitulo}
-            mode="outlined"
-            keyboardType="default"
-
-        />
+            <Card>
 
 
-        <TextInput
-            label="Precio"
-            value={precioaux}
-            onChangeText={setPrecio}
-            mode="outlined"
-            keyboardType="numeric"
+                {Url ? <Card.Cover source={{ uri: Url }} /> : <Card.Cover source={{ uri: "https://img.freepik.com/psd-premium/maqueta-botella-agua-dulce_358694-279.jpg?w=2000" }} />}
+                <Card.Title title={tituloaux} subtitle={categoriaaux} />
+                <Card.Content>
+                    {/* <Text variant="titleLarge">{prod.title}</Text> */}
+                    <Text variant="bodyMedium">{precioaux}</Text>
 
+                </Card.Content>
+            </Card>
 
-        />
+            <TextInput
+                label="Codigo"
+                value={Idaux}
+                onChangeText={setId}
+                mode="outlined"
+                keyboardType="numeric"
 
-        <TextInput
-            label="Categoria"
-            value={categoriaaux}
-            onChangeText={setCategoria}
-            mode="outlined"
-            keyboardType="default"
-
-
-
-        />
-        <TextInput
-            label="Peso"
-            value={Peso}
-            onChangeText={setPeso}
-            mode="outlined"
-            keyboardType="numeric"
-
-
-        />
-
-        <View style={styles.cajaBotones}>
-            <Button
-                title='Agregar Producto'
-                onPress={() => {
-                    AñadirProducto();
-                    navigation.goBack();
-                }}
-                buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
-                containerStyle={{
-                    width: 200,
-                    paddingTop: 40
-                }}
             />
 
-            <Button
-                title='Agregar Imagen'
-                onPress={() => {
-                    pickImages();
-                }}
-                buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
-                containerStyle={{
-                    width: 200,
-                    paddingTop: 40
-                }}
+            <TextInput
+                label="Nombre"
+                value={tituloaux}
+                onChangeText={setTitulo}
+                mode="outlined"
+                keyboardType="default"
+
             />
-        </View>
+
+
+            <TextInput
+                label="Precio"
+                value={precioaux}
+                onChangeText={setPrecio}
+                mode="outlined"
+                keyboardType="numeric"
+
+
+            />
+
+            <TextInput
+                label="Categoria"
+                value={categoriaaux}
+                onChangeText={setCategoria}
+                mode="outlined"
+                keyboardType="default"
+
+
+
+            />
+            <TextInput
+                label="Peso"
+                value={Peso}
+                onChangeText={setPeso}
+                mode="outlined"
+                keyboardType="numeric"
+
+
+            />
+
+            <View style={styles.cajaBotones}>
+                <Button
+                    title='Agregar Producto'
+                    onPress={() => {
+                        AñadirProducto();
+                        navigation.goBack();
+                    }}
+                    buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
+                    containerStyle={{
+                        width: 100,
+                        paddingTop: 40,
+                        paddingHorizontal: 2
+                    }}
+                />
+
+                <Button
+                    title='Agregar Imagen'
+                    onPress={() => {
+                        pickImages();
+                    }}
+                    buttonStyle={{ borderRadius: 10, backgroundColor: theme.colors.jade, alignSelf: "auto" }}
+                    containerStyle={{
+                        width: 100,
+                        paddingTop: 40
+                    }}
+                />
+            </View>
+        </ScrollView>
     </View>
 
 }
-
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffff',
-        alignItems: 'stretch',
+        // alignItems: 'stretch',
         justifyContent: 'center',
-        padding: 10,
-        // backgroundColor: "gray"
+        dColor: "gray"
     },
     cajaBotones: {
-        paddingBottom: 10,
+        padding: 10,
         alignItems: 'center',
-        justifyContent: 'flex-start',
-        flex: 4
-    }
+        justifyContent: 'space-between',
+        flex: 2,
+        flexDirection: "row"
+    },
+    scrollView: {
+        // backgroundColor: 'pink',
+        marginHorizontal: 10,
+    },
 
 });

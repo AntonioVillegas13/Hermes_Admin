@@ -25,6 +25,7 @@ import { PedidoContext } from './app/context/PedidosContext';
 import { ListaPedidosNoProcesados } from './app/screens/TiposPedidoScreen/PedidosNoProcesadosScreen';
 import { ListaPedidosProcesados } from './app/screens/TiposPedidoScreen/PedidosProcesadosScreen';
 import { DetallePedidoNopProcesado } from './app/screens/AdministradorScreen/DetallePedidoaNoProcesado';
+import { doc, getDoc } from "firebase/firestore";
 const StackMoProd = createNativeStackNavigator();
 const LoginStack = createNativeStackNavigator();
 const StackClient = createNativeStackNavigator();
@@ -234,12 +235,27 @@ const LoginNav = () => {
   </LoginStack.Navigator>
 }
 
+const verficarFire = async (fnSetLogin,id) => {
 
+  const docRef = doc(global.dbCon, "Administradores",id);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    fnSetLogin(true);
+    console.log("Document data:", docSnap.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  }
+
+}
 
 export default function App() {
   const PedidosData = {
+
     productos: []
   }
+
+
   const [Login, setlogin] = useState(false);
 
   const [user, setUser] = useState();
@@ -254,7 +270,8 @@ export default function App() {
 
           const uid = user.uid;
           console.log("Observer Cambia !!!!a sing in1")
-          setlogin(true);
+          verficarFire(setlogin,uid);
+          
           console.log("L,", Login)
           // ...
         } else {

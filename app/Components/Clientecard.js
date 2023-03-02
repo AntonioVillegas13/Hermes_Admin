@@ -14,12 +14,7 @@ export const TarjetaCliente = (props) => {
             <TouchableHighlight onPress={() => {
                 console.log("entre")
             }}
-                onLongPress={() => {
-                    console.log("entre largo")
-                    EliminarCliente(prod.identificacion, props.funcionCliente, props.clientes)
-                    elim()
-                }}
-
+              
             >
                 <Card>
 

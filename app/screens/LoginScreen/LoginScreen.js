@@ -18,25 +18,23 @@ export const LoginForm = ({ navigation }) => {
     const [hasErrorcorreo, sethasErrorcorreo] = useState(false)
     const [hasErrorcontraseña, sethasErrorcontraseña] = useState();
     const [cambiarOjo, setCambiarOjo] = useState(false);
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
+    const contraseñaRegex = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
     const validaciones = () => {
         if (contraseña == null || contraseña == "") {
             sethasErrorcontraseña(true)
             setErrorPassword("ingrese una contraseña")
 
-        } else {
+        } else if (usuario == null || usuario == "") {
 
             sethasErrorcontraseña(false)
-        }
-        if (usuario == null || usuario == "") {
-            sethasErrorcorreo(true)
-            setErrorCorreo("Ingrese un correo")
-
-        } else {
-
-            sethasErrorcorreo(false)
+        } else if (!contraseñaRegex.test(contraseña)){
+            
+        }else if (!emailRegex.test(usuario)){
 
         }
+       
 
 
 
@@ -67,7 +65,7 @@ export const LoginForm = ({ navigation }) => {
 
     return <View style={styles.container}>
         <View style={styles.cajaCabecera}>
-            <Image source={require('../../../assets/HermesLogo.png')} style={{ width: 400, height: 160 }} />
+            <Image source={require('../../../assets/HermesLogo.png')}  style={{ width: 500, height: 160, margin: 30, resizeMode: 'contain' }}  />
         </View>
         <View style={styles.cajaCuerpo}>
 

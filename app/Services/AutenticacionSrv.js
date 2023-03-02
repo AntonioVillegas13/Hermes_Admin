@@ -25,16 +25,9 @@ export const RecuperarUsuario= async(fnsetId)=>{
 
 }
 
-export const Eliminar=()=>{
-  const auth=getAuth();
-  const user=auth.currentUser;
-  deleteUser(user).then(() => {
-    console.log("usuario eliminado")
-  }).catch((error) => {
-    // An error ocurred
-    console.log("Eroror",error)
-    // ...
-  });
+export const Eliminar=(uid)=>{
+
+  
 }
 
 
@@ -46,8 +39,6 @@ export const Ingresar = (email, password) => {
       const user = userCredential.user;
       console.log("correcto ingreso", user)
       global.userIdLogin=user.uid
-
-
 
 
 
